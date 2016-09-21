@@ -1,0 +1,13 @@
+group 'io.bace'
+version '1.0.SNAPSHOT'
+
+apply plugin: 'java'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    'io.vertx:vertx-web:3.3.3'
+}
