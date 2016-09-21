@@ -1,7 +1,8 @@
 group 'io.bace'
-version '1.0.SNAPSHOT'
+version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
+apply plugin: 'maven'
 
 repositories {
     mavenLocal()
@@ -9,5 +10,5 @@ repositories {
 }
 
 dependencies {
-    'io.vertx:vertx-web:3.3.3'
+    compile 'io.vertx:vertx-web:3.3.3'
 }
