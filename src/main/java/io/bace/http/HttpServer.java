@@ -22,6 +22,7 @@ public class HttpServer extends AbstractVerticle {
         Bace.routerFactory().initialize(); //TODO: remove this to lifecycle method
         vertxHttpServer.requestHandler(vertxRouter::accept);
         vertxHttpServer.listen(port);
+        System.out.println("Server running in port: " + port);
     }
 
     private void doroute() {
