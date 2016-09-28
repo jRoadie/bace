@@ -1,8 +1,5 @@
 package io.bace.http;
 
-import io.bace.http.handler.HttpReqResHandler;
-import io.bace.http.handler.HttpRouteHandler;
-import io.bace.http.handler.HttpRoutingContextHandler;
 import io.vertx.core.http.HttpMethod;
 
 import java.util.LinkedList;
@@ -25,12 +22,12 @@ public class HttpRouter<R> {
         return (R)this;
     }
 
-    public R get(String path, HttpReqResHandler handler) {
+    public R get(String path, HttpRouteHandler handler) {
         registerHttpRoute(path, HttpMethod.GET, handler);
         return (R)this;
     }
 
-    public R post(String path, HttpRoutingContextHandler handler) {
+    public R post(String path, HttpRouteHandler handler) {
         registerHttpRoute(path, HttpMethod.POST, handler);
         return (R)this;
     }
@@ -41,7 +38,13 @@ public class HttpRouter<R> {
     }
 
     public void registerHttpRoute(String path, HttpMethod httpMethod, HttpRouteHandler handler) {
-        listOfHttpRoutes.add(new HttpRoute(mountPoint == null ? path : mountPoint + path, httpMethod, handler));
+        listOfHttpRoutes.add(
+                new HttpRoute(
+                        mountPoint == null ? path : mountPoint + path,
+                        httpMethod,
+                        handler
+                )
+        );
     }
 
 }

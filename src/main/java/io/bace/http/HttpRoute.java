@@ -1,11 +1,7 @@
 package io.bace.http;
 
 import io.bace.core.Bace;
-import io.bace.http.handler.HttpReqResHandler;
-import io.bace.http.handler.HttpRouteHandler;
-import io.vertx.core.Handler;
 import io.vertx.core.http.*;
-import io.vertx.ext.web.Router;
 
 public class HttpRoute {
 
@@ -21,8 +17,7 @@ public class HttpRoute {
 
     public void register() {
         Bace.app().httpServer().router().route(path).method(httpMethod).handler(rctx -> {
-            if(httpRouteHandler instanceof HttpReqResHandler)
-                ((HttpReqResHandler)httpRouteHandler).handle(rctx.request(), rctx.response());
+            httpRouteHandler.handle(new HttpRequestContext(rctx), new HttpResponseContext(rctx));
         });
     }
 
