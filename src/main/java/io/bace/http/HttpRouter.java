@@ -41,7 +41,7 @@ public class HttpRouter<R> {
     }
 
     public void registerHttpRoute(String path, HttpMethod httpMethod, HttpRouteHandler handler) {
-        listOfHttpRoutes.add(new HttpRoute(path, httpMethod, handler));
+        listOfHttpRoutes.add(new HttpRoute(mountPoint == null ? path : mountPoint + path, httpMethod, handler));
     }
 
 }

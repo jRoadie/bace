@@ -47,7 +47,6 @@ public final class Bace {
         /* TODO: add other baceapp class registry */
         for(Class clazz : classes) {
             if(HttpRouter.class.isAssignableFrom(clazz)){
-                System.out.println("Registering Router: " + clazz.getCanonicalName());
                 BaceRegistry.registerHttpRouters(clazz);
             }
         }
