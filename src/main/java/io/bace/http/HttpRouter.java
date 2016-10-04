@@ -26,17 +26,17 @@ public abstract class HttpRouter<R> {
         return (R)this;
     }
 
+    protected R get(String path, HttpParamHandler handler) {
+        registerHttpRoute(path, HttpMethod.GET, handler);
+        return (R)this;
+    }
+
     protected R get(String path, HttpRoutingContextHandler handler) {
         registerHttpRoute(path, HttpMethod.GET, handler);
         return (R)this;
     }
 
     protected R get(String path, HttpRequestResponseHandler handler) {
-        registerHttpRoute(path, HttpMethod.GET, handler);
-        return (R)this;
-    }
-
-    protected R get(String path, HttpParamHandler handler) {
         registerHttpRoute(path, HttpMethod.GET, handler);
         return (R)this;
     }

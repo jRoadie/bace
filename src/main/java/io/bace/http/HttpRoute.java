@@ -1,8 +1,10 @@
 package io.bace.http;
 
 import io.bace.core.Bace;
+import io.bace.http.context.HttpParamContext;
 import io.bace.http.context.HttpRequestContext;
 import io.bace.http.context.HttpResponseContext;
+import io.bace.http.handler.HttpParamHandler;
 import io.bace.http.handler.HttpRequestResponseHandler;
 import io.bace.http.handler.HttpRouteHandler;
 import io.bace.http.handler.HttpRoutingContextHandler;
@@ -26,6 +28,8 @@ public class HttpRoute {
                 ((HttpRoutingContextHandler)httpRouteHandler).handle(rctx);
             } else if(httpRouteHandler instanceof HttpRequestResponseHandler) {
                 ((HttpRequestResponseHandler)httpRouteHandler).handle(new HttpRequestContext(rctx), new HttpResponseContext(rctx));
+            } else if(httpRouteHandler instanceof HttpParamHandler) {
+                ((HttpParamHandler)httpRouteHandler).handle(new HttpParamContext(rctx));
             }
         });
     }
