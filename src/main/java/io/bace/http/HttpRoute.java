@@ -24,9 +24,7 @@ public class HttpRoute {
 
     public void register() {
         Bace.app().httpServer().router().route(path).method(httpMethod).handler(rctx -> {
-            if(httpRouteHandler instanceof HttpRoutingContextHandler) {
-                ((HttpRoutingContextHandler)httpRouteHandler).handle(rctx);
-            } else if(httpRouteHandler instanceof HttpRequestResponseHandler) {
+            if(httpRouteHandler instanceof HttpRequestResponseHandler) {
                 ((HttpRequestResponseHandler)httpRouteHandler).handle(new HttpRequestContext(rctx), new HttpResponseContext(rctx));
             } else if(httpRouteHandler instanceof HttpParamHandler) {
                 ((HttpParamHandler)httpRouteHandler).handle(new HttpParamContext(rctx));

@@ -3,7 +3,6 @@ package io.bace.http;
 import io.bace.http.handler.HttpParamHandler;
 import io.bace.http.handler.HttpRequestResponseHandler;
 import io.bace.http.handler.HttpRouteHandler;
-import io.bace.http.handler.HttpRoutingContextHandler;
 import io.vertx.core.http.HttpMethod;
 
 import java.util.LinkedList;
@@ -26,23 +25,13 @@ public abstract class HttpRouter<R> {
         return (R)this;
     }
 
-    protected R get(String path, HttpParamHandler handler) {
-        registerHttpRoute(path, HttpMethod.GET, handler);
-        return (R)this;
-    }
-
-    protected R get(String path, HttpRoutingContextHandler handler) {
-        registerHttpRoute(path, HttpMethod.GET, handler);
-        return (R)this;
-    }
-
     protected R get(String path, HttpRequestResponseHandler handler) {
         registerHttpRoute(path, HttpMethod.GET, handler);
         return (R)this;
     }
 
-    protected R post(String path, HttpRouteHandler handler, Object... objects) {
-        registerHttpRoute(path, HttpMethod.POST, handler);
+    protected R get(String path, HttpParamHandler handler) {
+        registerHttpRoute(path, HttpMethod.GET, handler);
         return (R)this;
     }
 
