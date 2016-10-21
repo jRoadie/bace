@@ -3,11 +3,11 @@ package io.bace.http.context;
 import io.vertx.core.http.HttpServerRequest;
 import io.vertx.ext.web.RoutingContext;
 
-public class HttpRequestContext {
+public class RequestContext {
 
     private RoutingContext vertxRoutingContext;
 
-    public HttpRequestContext(RoutingContext rctx) {
+    public RequestContext(RoutingContext rctx) {
         this.vertxRoutingContext = rctx;
     }
 

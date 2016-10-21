@@ -1,7 +1,7 @@
 package io.bace.http;
 
 import io.bace.http.handler.HttpParamHandler;
-import io.bace.http.handler.HttpRequestResponseHandler;
+import io.bace.http.handler.RequestResponseHandler;
 import io.bace.http.handler.HttpRouteHandler;
 import io.vertx.core.http.HttpMethod;
 
@@ -25,7 +25,7 @@ public abstract class HttpRouter<R> {
         return (R)this;
     }
 
-    protected R get(String path, HttpRequestResponseHandler handler) {
+    protected R get(String path, RequestResponseHandler handler) {
         registerHttpRoute(path, HttpMethod.GET, handler);
         return (R)this;
     }

@@ -2,12 +2,11 @@ package io.bace.http;
 
 import io.bace.core.Bace;
 import io.bace.http.context.HttpParamContext;
-import io.bace.http.context.HttpRequestContext;
-import io.bace.http.context.HttpResponseContext;
+import io.bace.http.context.RequestContext;
+import io.bace.http.context.ResponseContext;
 import io.bace.http.handler.HttpParamHandler;
-import io.bace.http.handler.HttpRequestResponseHandler;
+import io.bace.http.handler.RequestResponseHandler;
 import io.bace.http.handler.HttpRouteHandler;
-import io.bace.http.handler.HttpRoutingContextHandler;
 import io.vertx.core.http.HttpMethod;
 
 public class HttpRoute {
@@ -24,8 +23,8 @@ public class HttpRoute {
 
     public void register() {
         Bace.app().httpServer().router().route(path).method(httpMethod).handler(rctx -> {
-            if(httpRouteHandler instanceof HttpRequestResponseHandler) {
-                ((HttpRequestResponseHandler)httpRouteHandler).handle(new HttpRequestContext(rctx), new HttpResponseContext(rctx));
+            if(httpRouteHandler instanceof RequestResponseHandler) {
+                ((RequestResponseHandler)httpRouteHandler).handle(new RequestContext(rctx), new ResponseContext(rctx));
             } else if(httpRouteHandler instanceof HttpParamHandler) {
                 ((HttpParamHandler)httpRouteHandler).handle(new HttpParamContext(rctx));
             }
