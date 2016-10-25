@@ -1,9 +1,8 @@
 package io.bace.core;
 
 import io.bace.core.factory.HttpRouterFactory;
-import io.bace.http.HttpRouter;
+import io.bace.http.HttpRestRouter;
 import io.bace.http.HttpServer;
-import io.vertx.core.Vertx;
 
 import java.io.IOException;
 import java.util.LinkedList;
@@ -46,7 +45,7 @@ public final class Bace {
 
         /* TODO: add other baceapp class registry */
         for(Class clazz : classes) {
-            if(HttpRouter.class.isAssignableFrom(clazz)){
+            if(HttpRestRouter.class.isAssignableFrom(clazz)){
                 BaceRegistry.registerHttpRouters(clazz);
             }
         }

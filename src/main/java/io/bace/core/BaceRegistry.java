@@ -1,6 +1,6 @@
 package io.bace.core;
 
-import io.bace.http.HttpRouter;
+import io.bace.http.HttpRestRouter;
 
 import java.io.File;
 import java.io.IOException;
@@ -9,13 +9,13 @@ import java.util.*;
 
 public class BaceRegistry {
 
-    private static List<Class<? extends HttpRouter>> listOfHttpRouterClasses = new LinkedList<>();
+    private static List<Class<? extends HttpRestRouter>> listOfHttpRouterClasses = new LinkedList<>();
 
-    public static void registerHttpRouters(Class<? extends HttpRouter> httpRouterClass) {
+    public static void registerHttpRouters(Class<? extends HttpRestRouter> httpRouterClass) {
         listOfHttpRouterClasses.add(httpRouterClass);
     }
 
-    public static List<Class<? extends HttpRouter>> listOfHttpRouterClasses() {
+    public static List<Class<? extends HttpRestRouter>> listOfHttpRouterClasses() {
         return new LinkedList<>(listOfHttpRouterClasses); //immutable
     }
 

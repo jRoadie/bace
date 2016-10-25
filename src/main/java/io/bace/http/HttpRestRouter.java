@@ -9,7 +9,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 @SuppressWarnings("unchecked")
-public abstract class HttpRouter<R> {
+public abstract class HttpRestRouter<R> {
 
     private String mountPoint;
     private List<HttpRoute> listOfHttpRoutes = new LinkedList<>();
